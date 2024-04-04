@@ -1,0 +1,70 @@
+<Configuration>
+    <!-- All backslashes must be doubled, groups for replacement are noted $1, $2, etc.... -->
+    <!-- linkType is optional. If specified, a link will be created from the parent to the new object -->
+    <ObjectTypes>
+        <ObjectType name='CAST_SQL_NamedQuery'>
+            <RefPatterns>
+                <RefPattern id="insert" linkType="useInsertLink" searchInCode="true" searchInComments="false" searchInStrings="true" slice="0" Xmx="8G">
+                    <sourceTechno name="Java"/>
+                    <callerTypes>
+                        <callerType name="JV_METHOD"/>
+                        <callerType name="JV_CTOR"/>
+                        <callerType name="JV_FIELD"/>
+                    </callerTypes>
+                    <!-- callerName caseSensitive="true"><![CDATA[get\\w+]]></callerName -->
+                    <filePatterns>
+                        <filePattern><![CDATA[.+\\.java]]></filePattern>
+                        <filePattern><![CDATA[.+\\.jsp]]></filePattern>
+                    </filePatterns>
+                    <regularExpression caseSensitive="false"><![CDATA[insert\\s+into\\s+[\\w\\.]+]]></regularExpression>
+                    <replacement><![CDATA[$0]]></replacement>
+                </RefPattern>
+                <RefPattern id="select" linkType="useSelectLink" searchInCode="true" searchInComments="false" searchInStrings="true" slice="0" Xmx="8G">
+                    <sourceTechno name="Java"/>
+                    <callerTypes>
+                        <callerType name="JV_METHOD"/>
+                        <callerType name="JV_CTOR"/>
+                        <callerType name="JV_FIELD"/>
+                    </callerTypes>
+                    <!-- callerName caseSensitive="true"><![CDATA[get\\w+]]></callerName -->
+                                        <filePatterns>
+                        <filePattern><![CDATA[.+\\.java]]></filePattern>
+                        <filePattern><![CDATA[.+\\.jsp]]></filePattern>
+                    </filePatterns>
+                    <regularExpression caseSensitive="false"><![CDATA[select[\\w\\s,\\.]+from\\s+[\\w\\.]+]]></regularExpression>
+                    <replacement><![CDATA[$0]]></replacement>
+                </RefPattern>
+                <RefPattern id="update" linkType="useUpdateLink" searchInCode="true" searchInComments="false" searchInStrings="true" slice="0" Xmx="8G">
+                    <sourceTechno name="Java"/>
+                    <callerTypes>
+                        <callerType name="JV_METHOD"/>
+                        <callerType name="JV_CTOR"/>
+                        <callerType name="JV_FIELD"/>
+                    </callerTypes>
+                    <!-- callerName caseSensitive="true"><![CDATA[get\\w+]]></callerName -->
+                    <filePatterns>
+                        <filePattern><![CDATA[.+\\.java]]></filePattern>
+                        <filePattern><![CDATA[.+\\.jsp]]></filePattern>
+                    </filePatterns>
+                    <regularExpression caseSensitive="false"><![CDATA[update\\s+[\\w\\.]+\\s+set]]></regularExpression>
+                    <replacement><![CDATA[$0]]></replacement>
+                </RefPattern>                
+                <RefPattern id="delete" linkType="useDeleteLink" searchInCode="true" searchInComments="false" searchInStrings="true" slice="0" Xmx="8G">
+                    <sourceTechno name="Java"/>
+                    <callerTypes>
+                        <callerType name="JV_METHOD"/>
+                        <callerType name="JV_CTOR"/>
+                        <callerType name="JV_FIELD"/>
+                    </callerTypes>
+                    <!-- callerName caseSensitive="true"><![CDATA[get\\w+]]></callerName -->
+                    <filePatterns>
+                        <filePattern><![CDATA[.+\\.java]]></filePattern>
+                        <filePattern><![CDATA[.+\\.jsp]]></filePattern>
+                    </filePatterns>
+                    <regularExpression caseSensitive="false"><![CDATA[delete\\s+from\\s+[\\w\\.]+]]></regularExpression>
+                    <replacement><![CDATA[$0]]></replacement>
+                </RefPattern>
+            </RefPatterns>
+        </ObjectType>
+    </ObjectTypes>
+</Configuration>
